@@ -262,16 +262,5 @@ python -m unittest discover -s tests -p "test_*.py" -v
 - The current evaluation set contains only 19 documents.
 - The trained model is rebuilt from the training dataset whenever the application starts.
 
-## 8. Author
-
-**Abdellah Maachi**
-
-Master's Student in Advanced Machine Learning and Multimedia Intelligence (MLAIM)
-
-Faculty of Sciences Dhar El Mahraz, Fez, Morocco
-
-GitHub: [abdellahmaachi](https://github.com/abdellahmaachi)
-
----
 
 **Academic Project — Text Mining | Python | Machine Learning | Natural Language Processing**
