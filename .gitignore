@@ -20,7 +20,7 @@ env/
 .env.*
 
 # Training and testing datasets
-data/
+dataset/
 
 # Generated files
 *.log
