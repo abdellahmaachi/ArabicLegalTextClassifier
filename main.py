@@ -1,27 +1,49 @@
+
 from loader import load_documents
 from naive_bayes import (
     build_document_map,
     train_naive_bayes,
     predict
 )
+from evaluation import evaluate
 
-# 1. Charger les documents
-documents = load_documents("dataset/trainset")
 
-# 2. Construire Map 1
-document_map = build_document_map(documents)
+# 1. Chargement des documents
+train_documents = load_documents("dataset/trainset")
+test_documents = load_documents("dataset/testset")
 
-# 3. Entraîner Naive Bayes et construire Map 2
+# 2. Construction de Map 1
+document_map = build_document_map(train_documents)
+
+# 3. Entraînement et construction de Map 2
 model = train_naive_bayes(document_map)
 
-# 4. Afficher quelques informations
-print("Documents :", len(document_map))
+print("Documents train :", len(train_documents))
+print("Documents test :", len(test_documents))
 print("Vocabulaire :", len(model["vocabulary"]))
-print("Classes :", list(model["prior_map"]))
 
-# 5. Classifier un nouveau texte
-texte = "عقد بيع عقار وملكية أرض"
+# 4. Évaluation du modèle
+results = evaluate(model, test_documents)
 
-classe = predict(texte, model)
+print("\n===== RÉSULTATS =====")
+print(f"Accuracy : {results['accuracy']:.2%}")
+print(f"Macro F1 : {results['macro_f1']:.2%}")
 
-print("Classe prédite :", classe)
+for classe, metrics in results["metrics"].items():
+    print(f"\nClasse : {classe}")
+    print(f"Precision : {metrics['precision']:.2%}")
+    print(f"Recall    : {metrics['recall']:.2%}")
+    print(f"F1-score  : {metrics['f1']:.2%}")
+
+print("\n===== MATRICE DE CONFUSION =====")
+
+for classe, predictions in results["confusion_matrix"].items():
+    print(classe, ":", predictions)
+
+# 5. Classification d'un nouveau document
+text = "عقد بيع عقار وملكية أرض"
+
+prediction = predict(text, model)
+
+print("\nNouveau texte :", text)
+print("Classe prédite :", prediction)
