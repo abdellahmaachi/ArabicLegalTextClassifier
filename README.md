@@ -108,9 +108,9 @@ Example:
 
 Word probabilities are calculated using **Laplace (Add-One) Smoothing**:
 
-$$\[
+$$
 P(w_k \mid C_i) = \frac{n_k + 1}{n_i + m}
-\]$$
+$$
 
 Where:
 
@@ -142,9 +142,9 @@ Score(C_i,d)=\log P(C_i)+\sum_{w\in V_d}f(w,d)\log P(w\mid C_i)
 
 The predicted class is the one with the highest score:
 
-$$\[
+$$
 C_{predicted}=\arg\max_{C_i} Score(C_i,d)
-\]$$
+$$
 
 Log probabilities are used to avoid numerical underflow when processing long documents.
 
