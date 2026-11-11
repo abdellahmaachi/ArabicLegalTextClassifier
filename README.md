@@ -120,9 +120,9 @@ Where:
 
 Class prior probabilities are calculated as:
 
-$$\[
+$$
 P(C_i)=\frac{N_i}{N}
-\]$$
+$$
 
 Where `Ni` is the number of training documents belonging to class `Ci`, and `N` is the total number of training documents.
 
@@ -136,9 +136,9 @@ This dictionary stores the conditional probability of each vocabulary word for e
 
 For a new document, the classifier computes a score for each class using log probabilities:
 
-$$\[
+$$
 Score(C_i,d)=\log P(C_i)+\sum_{w\in V_d}f(w,d)\log P(w\mid C_i)
-\]$$
+$$
 
 The predicted class is the one with the highest score:
 
